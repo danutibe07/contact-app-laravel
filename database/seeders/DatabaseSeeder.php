@@ -7,11 +7,13 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        $this->call(CompaniesTableSeeder::class);
+        $this->call([
+            CompaniesTableSeeder::class,
+            ContactsTableSeeder::class
+        ]);
+        // Companies::factory()->count(10)->create();
+        // Contact::factory()->count(50)->create();
     }
 }

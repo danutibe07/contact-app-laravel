@@ -4,8 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Company;
 
-class contacts extends Model
+class Contact extends Model
 {
     use HasFactory;
+
+    public function companies(){
+        $this->belongsTo(Company::class);
+    }
 }

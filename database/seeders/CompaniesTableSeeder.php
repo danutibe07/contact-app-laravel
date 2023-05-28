@@ -1,12 +1,12 @@
+namespace Database\Seeders;
 <?php
 
-namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
-
+   
 
 class CompaniesTableSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('companies')->truncate();
+        DB::table('companies')->delete();
 
         $companies = [];
         $faker = Faker::create();
@@ -35,3 +35,4 @@ class CompaniesTableSeeder extends Seeder
         DB::table('companies')->insert($companies);
     }
 }
+ 
