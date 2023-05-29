@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,16 +15,13 @@ class CompanyFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-                'name' => fake()->name(),
-                'address' => fake()->address(),
-                'website' =>  fake()->url(),
-                'email' => fake()->unique()->safeEmail(),
-                'created_at' => now(),
-                'updated_at' =>  now(),
+            'name' => $this->faker->name,
+            'address' => $this->faker->address,
+            'website' => $this->faker->domainName,
+            'email' => $this->faker->email,
         ];
     }
 }
-  

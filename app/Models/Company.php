@@ -12,9 +12,9 @@ class Company extends Model
 
     protected $fillable = ['name', 'address', 'website' , 'email'];
 
-    public function contacts()
+    public function contact()
     {
-        $this->hasMany(Contact::class);
+    return $this->hasMany(Contact::class);
     }
 }
 
