@@ -33,7 +33,7 @@
                     @if ($contacts->count())
                         @foreach ($contacts as $index => $contact)
                         <tr>
-                          <th scope="row">{{ $index + 1}}</th>
+                          <th scope="row">{{ $index + $contacts->firstItem()}}</th>
                           <td scope="col">{{ $contact->first_name}}</td>
                           <td scope="col">{{ $contact->last_name}}</td>
                           <td scope="col">{{ $contact->email}}</td>
@@ -51,7 +51,8 @@
               </table> 
 
               {{-- Pagination --}}
-              <nav class="mt-4">
+             {{ $contacts->appends(request()->only('company_id'))->links() }} 
+              {{-- <nav class="mt-4">
                   <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
                       <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -63,7 +64,7 @@
                       <a class="page-link" href="#">Next</a>
                     </li>
                   </ul>
-                </nav>
+              </nav> --}}
             </div>
           </div>
         </div>

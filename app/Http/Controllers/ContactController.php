@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 use App\Models\Contact;
+use App\Models\Company;
 use Illuminate\Http\Request;
-
+ 
 class ContactController extends Controller
 {
     public function index()
     {
-    // $contacts = Contact::all();
-    $contacts = Contact::orderBy('first_name', 'asc')->get();
+    $companies = Company::orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+    $contacts = Contact::orderBy('first_name', 'asc')->where(function ($query){
+        if ($companyId = request('company_id')){
+            $query->where('company_id', $companyId);
+        }
+    })->paginate(5);
     
-    return view('contacts.index' , compact('contacts'));
+    return view('contacts.index' , compact('contacts' , 'companies'));
     }
  
     public function create()
