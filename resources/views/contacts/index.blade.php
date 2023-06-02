@@ -30,8 +30,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if($message = session('$message'))
-                    <div class="alert alert-success">{{ $message }}</div>
+                  {{-- @if ($message = session('$message'))
+                     <div class="alert alert-success">{{ $message }}</div>
+                  @endif --}}
+                  @if(session('message'))
+                    <div class="alert alert-success"> {{ session('message') }}</div>
                   @endif
                     @if ($contacts->count())
                         @foreach ($contacts as $index => $contact)
@@ -44,7 +47,7 @@
                           <td scope="col">{{ $contact->company->name}}</td>
                           <td width="150">
                             <a href="{{ route('contacts.show', $contact->id) }}" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
-                            <a href="" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
                             <a href="" class="btn-delete btn btn-sm btn-circle btn-outline-danger" title="Delete" ><i class="fa fa-times"></i></a>
                           </td>
                         </tr>
