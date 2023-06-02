@@ -63,7 +63,7 @@
       <div class="form-group row">
         <label for="name" class="col-md-3 col-form-label">Address</label>
         <div class="col-md-9">
-          <textarea name="address" id="address" rows="3" class="form-control @error('address') is-invalid @enderror">{{ old('address') }}"</textarea>
+          <textarea name="address" id="address" rows="3" class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
           @error('address')
           <div class="invalid-feedback">
            {{ $message }}
@@ -74,7 +74,7 @@
       <div class="form-group row">
         <label for="company_id" class="col-md-3 col-form-label">Company</label>
         <div class="col-md-9">
-          <select name="company_id" id="company_id" class="form-control">
+          <select name="company_id" id="company_id" class="form-control @error('company_id') is-invalid @enderror">
                 @foreach ($companies as $id => $name)
                   <option {{ $id === old('company_id') ? 'selected' : '' }} value="{{ $id }}">{{ $name }}</option>
                 @endforeach
