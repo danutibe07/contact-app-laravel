@@ -8,6 +8,7 @@ use App\Models\Company;
 
 class Contact extends Model
 {
+    protected $fillable = ['first_name', 'last_name', 'email', 'hobbies','phone', 'address' , 'company_id'];
     use HasFactory;
 
     public function company(){
