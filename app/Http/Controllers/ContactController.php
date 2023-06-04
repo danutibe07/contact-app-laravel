@@ -70,6 +70,14 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $companies = Company::orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
-        return view('contacts.edit ' , compact('companies' , 'contact'));
+        return view('contacts.edit' , compact('companies' , 'contact'));
+    }
+
+    public function destroy($id)
+    {
+    $contact = Contact::findOrFail($id);
+    $contact->delete();
+
+    return  back()->with('message', "Contact has been deleted successfully");
     }
 }
